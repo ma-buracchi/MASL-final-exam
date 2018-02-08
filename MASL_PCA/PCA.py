@@ -98,10 +98,10 @@ separate()
 
 # ordinamento degli autovalori
 
-# creazione coppie (autovalore,autovettore)
+## creazione coppie (autovalore,autovettore)
 eig_pairs = [(np.abs(eig_vals[i]), eig_vecs[:,i]) for i in range(len(eig_vals))]
 
-# Ordinamento dal maggiore al minore
+## Ordinamento dal maggiore al minore
 eig_pairs.sort(key=lambda x: x[0], reverse=True)
 print('Autovalori ordinati:')
 for i in eig_pairs:
