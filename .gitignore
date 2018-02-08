@@ -222,3 +222,6 @@ TSWLatexianTemp*
 #pyDev
 *.project
 *.pydevproject
+
+#Eclipse
+MASL_PCA/.metadata/*
