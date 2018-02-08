@@ -4,7 +4,6 @@ Created on 08 feb 2018
 @author: marco
 '''
 
-import math
 import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
@@ -135,6 +134,7 @@ separate()
 
 # proiezione nel nuovo spazio
 Y = X_std.dot(matrix_w)
+print(Y)
 with plt.style.context('seaborn-whitegrid'):
     plt.figure(figsize=(6, 4))
     for lab, col in zip(('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
@@ -152,6 +152,7 @@ with plt.style.context('seaborn-whitegrid'):
 # pacchetto scikit-learn
 sklearn_pca = sklearnPCA(n_components=2)
 Y_sklearn = sklearn_pca.fit_transform(X_std)
+print(Y_sklearn)
 with plt.style.context('seaborn-whitegrid'):
     plt.figure(figsize=(6, 4))
     for lab, col in zip(('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
@@ -162,7 +163,7 @@ with plt.style.context('seaborn-whitegrid'):
                     c=col)
     plt.xlabel('Componente Principale 1')
     plt.ylabel('Componente Principale 2')
-    plt.legend(loc='lower center')
+    plt.legend(loc='lower right')
     plt.tight_layout()
     plt.show()
 
