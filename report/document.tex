@@ -53,6 +53,7 @@ parts]{classicthesis}
 \usepackage{tikz}
 \usepackage[object=vectorian]{pgfornament}
 \usepackage{listings}
+\usepackage{lipsum}
 %--------------------------------------------------------------
 \newlength{\abcd} % for ab..z string length calculation
 % how all the floats will be aligned
@@ -109,9 +110,12 @@ parts]{classicthesis}
 %--------------------------------------------------------------
 \include{titlePage}
 \tableofcontents
-\include{svolgimento}
+\include{chap/PCA}
+\include{chap/implementazione}
+\setcounter{secnumdepth}{0}
+\pagenumbering{roman}
 \begin{appendices}
-	\include{appendiceA}
+	\include{chap/appendiceA}
 \end{appendices}
 \pagestyle{scrheadings}
 %--------------------------------------------------------------
