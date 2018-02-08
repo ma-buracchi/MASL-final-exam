@@ -9,6 +9,7 @@ import pandas as pd
 import numpy as np
 from matplotlib import pyplot as plt
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA as sklearnPCA
 
 def separate():
     print('\n############################################################\n')
@@ -132,6 +133,38 @@ matrix_w = np.hstack((eig_pairs[0][1].reshape(4,1),
 print('Matrice W:\n', matrix_w)
 separate()
 
+# proiezione nel nuovo spazio
+Y = X_std.dot(matrix_w)
+with plt.style.context('seaborn-whitegrid'):
+    plt.figure(figsize=(6, 4))
+    for lab, col in zip(('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
+                        ('blue', 'red', 'green')):
+        plt.scatter(Y[y==lab, 0],
+                    Y[y==lab, 1],
+                    label=lab,
+                    c=col)
+    plt.xlabel('Componente Principale 1')
+    plt.ylabel('Componente Principale 2')
+    plt.legend(loc='lower center')
+    plt.tight_layout()
+    plt.show()
+    
+# pacchetto scikit-learn
+sklearn_pca = sklearnPCA(n_components=2)
+Y_sklearn = sklearn_pca.fit_transform(X_std)
+with plt.style.context('seaborn-whitegrid'):
+    plt.figure(figsize=(6, 4))
+    for lab, col in zip(('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
+                        ('blue', 'red', 'green')):
+        plt.scatter(Y_sklearn[y==lab, 0],
+                    Y_sklearn[y==lab, 1],
+                    label=lab,
+                    c=col)
+    plt.xlabel('Componente Principale 1')
+    plt.ylabel('Componente Principale 2')
+    plt.legend(loc='lower center')
+    plt.tight_layout()
+    plt.show()
 
 if __name__ == '__main__':
     pass
