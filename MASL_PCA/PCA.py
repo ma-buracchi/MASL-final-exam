@@ -10,6 +10,9 @@ import numpy as np
 #from matplotlib import pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
+def separatore():
+    print('############################################################')
+
 # download dataset
 df = pd.read_csv(
     filepath_or_buffer='https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data',
@@ -59,19 +62,40 @@ y = df.ix[:,4].values
 # normalizzazione dati 
 X_std = StandardScaler().fit_transform(X)
 
-#vettore delle medie e matrice di covarianza
+# vettore delle medie e matrice di covarianza
 mean_vec = np.mean(X_std, axis=0)
 cov_mat = (X_std - mean_vec).T.dot((X_std - mean_vec)) / (X_std.shape[0]-1)
-print('Matrice di covarianza calcolata: \n%s' %cov_mat)
+print('Matrice di covarianza calcolata: \n%s\n' %cov_mat)
 
 # funzione di libreria
-print('Matrice di covarianza NumPy: \n%s' %np.cov(X_std.T))
+print('Matrice di covarianza NumPy: \n%s\n' %np.cov(X_std.T))
+separatore()
 
-# calcolo autovalori e autovettori
+# calcolo autovalori e autovettori su matrice di covarianza
 cov_mat = np.cov(X_std.T)
 eig_vals, eig_vecs = np.linalg.eig(cov_mat)
-print('Autovettori: \n%s' %eig_vecs)
-print('\nAutovalori: \n%s' %eig_vals)
+print('Autovettori cov: \n%s\n' %eig_vecs)
+print('Autovalori cov: \n%s\n' %eig_vals)
+separatore()
+
+# calcolo autovalori ed autovettori su matrice di correlazione dati standardizzati
+cor_mat1 = np.corrcoef(X_std.T)
+eig_vals, eig_vecs = np.linalg.eig(cor_mat1)
+print('Autovettori corrSTD: \n%s\n' %eig_vecs)
+print('Autovalori corrSTD: \n%s\n' %eig_vals)
+separatore()
+
+# calcolo autovalori ed autovettori su matrice di correlazione dati grezzi
+cor_mat2 = np.corrcoef(X.T)
+eig_vals, eig_vecs = np.linalg.eig(cor_mat2)
+print('Autovettori corr: \n%s\n' %eig_vecs)
+print('Autovalori corr: \n%s\n' %eig_vals)
+separatore()
+
+# decomposizione ai valori singolari
+u,s,v = np.linalg.svd(X_std.T)
+print('Autovettori SVD: \n%s\n' %u)
+separatore()
 
 if __name__ == '__main__':
     pass
