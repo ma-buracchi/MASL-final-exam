@@ -166,7 +166,7 @@ with plt.style.context('seaborn-whitegrid'):
                     c=col)
     plt.xlabel('Componente Principale 1')
     plt.ylabel('Componente Principale 2')
-    plt.legend(loc='lower right')
+    plt.legend(loc='lower center')
     plt.tight_layout()
     plt.show()
 
