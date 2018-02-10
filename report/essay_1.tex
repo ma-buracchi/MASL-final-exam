@@ -128,30 +128,41 @@ Prof.ssa Anna \textsc{Gottard} % Supervisor's Name
 	\subsection{Subsection 2} % Sub-section
 
 		\lipsum[2] % Dummy text
-		\begin{figure}[H] % Example image
-			\center{\includegraphics[width=0.5\linewidth]{placeholder}}
-			\caption{Example image.}
-			\label{fig:speciation}
-		\end{figure}
 
 \section{Implementazione Python} % Major section
 
-	Passiamo adesso all'implementazione di un piccolo esempio di \ac{PCA} su un sottoinsieme del dataset \emph{IRIS}. Per questa realizzazione è stato scelto il linguaggio \emph{Python} con la relativa libreria \emph{pandas}.
+	Passiamo adesso all'implementazione di un piccolo esempio di \ac{PCA} sul dataset \emph{IRIS}. Per questa realizzazione è stato scelto il linguaggio \emph{Python} con la relativa libreria \emph{pandas}.
 
 	\subsection{PANDAS} % Sub-section
 
-		\lipsum[6] % Dummy text
+		pandas è una libreria Python open-source, ad alte prestazioni e con licenza BSD che fornisce strutture dati e strumenti per l'analisi facili da usare.
+		\begin{wrapfigure}{l}{0.3\textwidth} % Inline image example
+			\begin{center}
+				\includegraphics[width=0.28\textwidth]{numFocus.png}
+			\end{center}
+		\end{wrapfigure}
+		\`{E} un progetto sponsorizzato da NumFocus. Questo assicura lo sviluppo continuo e a livello mondiale e permette anche di aiutare gli sviluppatori con donazioni o citazioni.Permette di lavorare con dati organizzati in maniera \emph{relazionale} o \emph{etichettata} in maniera intuitiva. Le sue due strutture dati principali sono le serie (unidimensionali) e i dataframe (bidimensionali). Per il nostro esempio utilizzeremo questa seconda struttura.
+		
 
 	\subsection{Implementazione} % Sub-sub-section
-
-		\lipsum[6] % Dummy text
-		\begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
+	
+		Come già detto, utilizzeremo il dataset IRIS che contiene 150 misurazioni di fiori iris di tre specie diverse. La figura \ref{fig:iris} schematizza le variabili del dataset che sono:
+		\begin{itemize}
+			\item Larghezza dei sepali in cm
+			\item Lunghezza dei sepali in cm
+			\item Larghezza dei petali in cm
+			\item Lunghezza dei petali in cm
+			\item Specie (setosa,versicolor,virginica)
+		\end{itemize}
+		\begin{figure}
 			\begin{center}
-		    	\includegraphics[width=0.38\textwidth]{fish}
+				\includegraphics[scale=.1]{iris}
+				\caption{Struttura dataset}
+				\label{fig:iris}
 			\end{center}
-			\caption{Fish}
-		\end{wrapfigure}
-		\lipsum[7-8] % Dummy text
+		\end{figure}
+
+		
 
 		\subsubsection{Subsubsection 3} % Sub-sub-section
 
