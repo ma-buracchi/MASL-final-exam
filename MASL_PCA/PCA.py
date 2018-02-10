@@ -22,7 +22,8 @@ df = pd.read_csv(
 # scelgo solamente le colonne con i valori di interesse
 df.columns=['sepal_len', 'sepal_wid', 'petal_len', 'petal_wid', 'class'] 
 df.dropna(how="all", inplace=True) # Elimina i valori NA
-df.tail()
+print(df.tail()) #visualizza ultime 5 righe
+separate()
 
 # print(df)
 
