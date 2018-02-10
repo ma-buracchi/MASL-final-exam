@@ -149,10 +149,8 @@ with plt.style.context('seaborn-whitegrid'):
 # pacchetto scikit-learn
 sklearn_pca = sklearnPCA(n_components=2)
 Y_sklearn = sklearn_pca.fit_transform(X_std)
-print(Y_sklearn)
 for i in Y_sklearn:
     i[1] = -1*i[1]
-print(Y_sklearn)
 with plt.style.context('seaborn-whitegrid'):
     plt.figure(figsize=(6, 4))
     for lab, col in zip(('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
