@@ -114,7 +114,7 @@ Prof.ssa Anna \textsc{Gottard}
 
 \section{Principal Component Analysis}
 
-	La \ac{PCA} è un trattamento matematico della matrice dei dati il cui scopo è rappresentare la variazione presente nelle tante variabili utilizzando un	numero k molto più piccolo di \emph{“fattori”} o \emph{“componenti principali”}. Si costruisce un nuovo spazio su cui rappresentare i campioni	ridefinendo gli assi utilizzando le componenti principali al posto delle variabili originali. L’uso di questi nuovi assi permette di rappresentare la vera natura multivariata dei dati in un numero relativamente piccolo di dimensioni e di usare questa rappresentazione per identificare la struttura dei dati stessi.  
+	La \ac{PCA} è una trasformazione lineare della matrice dei dati il cui scopo è rappresentare la variazione presente nelle tante variabili utilizzando un numero k molto più piccolo di \emph{“fattori”} o \emph{“componenti principali”}. Si costruisce un nuovo spazio su cui rappresentare i campioni	ridefinendo gli assi utilizzando le componenti principali al posto delle variabili originali. L’uso di questi nuovi assi permette di rappresentare la vera natura multivariata dei dati in un numero relativamente piccolo di dimensioni e di usare questa rappresentazione per identificare la struttura dei dati stessi.  
 	
 	\subsection{Cosa fa?}
 		Supponiamo di aver misurato il valore di due variabili su 40 campioni come in Figura \ref{fig:plot1} 
@@ -141,20 +141,25 @@ Prof.ssa Anna \textsc{Gottard}
 				\label{fig:componenti}
 			\end{center}
 		\end{figure}
-		In questo esempio, la prima componente principale cattura praticamente tutta la variabilità presente nei dati (99.83\%) mentre la seconda descrive la rimanente variazione (0.17\%). Questa considerazione può essere generalizzata: le componenti principali successive spiegano una sempre minore percentuale della variabilità originale. Seguendo questo principio è possibile dire che le ultime componenti principali descrivono principalmente \emph{rumore}. Come si effettua la \ac{PCA}?
+		In questo esempio, la prima componente principale cattura praticamente tutta la variabilità presente nei dati (99.83\%) mentre la seconda descrive la rimanente variazione (0.17\%). Questa considerazione può essere generalizzata: le componenti principali successive spiegano una sempre minore percentuale della variabilità originale. Seguendo questo principio è possibile dire che le ultime componenti principali descrivono principalmente \emph{rumore}.
 		
 	\subsection{Come funziona?}
 			
 		\begin{description}
-			\item[Standardizzazione:] Standardizziamo i dati (media = 0 e varianza = 1). In questo modo possiamo lavorare con variabili che hanno scale e unità di misura differenti.
-			\item[Calcolo della covarianza/correlazione:] Calcoliamo la matrice $\mathcal{S}$ di covarianza. La covarianza di due variabili indica quanto le due variabili si muovono insieme.
+			\item[Standardizzazione:] \hfill \\
+			 Standardizziamo i dati (media = 0 e varianza = 1). In questo modo possiamo lavorare con variabili che hanno scale e unità di misura differenti.
+			\item[Calcolo della covarianza/correlazione:] \hfill \\
+			 Calcoliamo la matrice $\mathcal{S}$ di covarianza. La covarianza di due variabili indica quanto le due variabili si muovono insieme.
 			$$\mathcal{S} = \frac{1}{n-1} \sum_{1}^{n} (x-\mu)(x-\mu)^T$$
 			In alternativa possiamo utilizzare anche la matrice di correlazione.
-			\item[Calcolo autovalori/autovettori:] Calcoliamo gli autovalori e gli autovettori della matrice di covarianza. Per definizione $$\mathcal{S} \times v = \lambda \times v$$
+			\item[Calcolo autovalori/autovettori:] \hfill \\ 
+			Calcoliamo gli autovalori e gli autovettori della matrice di covarianza. Per definizione $$\mathcal{S} \times v = \lambda \times v$$
 			
 			Ognuno di questi autovettori corrisponde ad un autovalore la cui grandezza indica quanta varianza viene spiegata da quell'autovettore. Ordiniamo quindi gli autovalori in ordine decrescente e prendiamo i primi k. Chiamiamo $\mathcal{V}$ la matrice degli autovettori risultante.
-			\item[Ruotiamo i dati:] Per convertire le osservazioni nel nuovo sistema di assi, moltiplichiamo i dati originali per gli autovettori che indicano la direzione dei nuovi assi (componenti principali). Questi dati ruotati vengono chiamati \emph{score}. $$Sc = X \times \mathcal{V}$$
-			\item[Dati ridotti:] A questo punto è possibile utilizzare i nuovi dati.
+			\item[Ruotiamo i dati:] \hfill \\
+			Per convertire le osservazioni nel nuovo sistema di assi, moltiplichiamo i dati originali per gli autovettori che indicano la direzione dei nuovi assi (componenti principali). Questi dati ruotati vengono chiamati \emph{score}. $$Sc = X \times \mathcal{V}$$
+			\item[Dati ridotti:] \hfill \\
+			A questo punto è possibile utilizzare i nuovi dati.
 		\end{description}
 	
 \section{Implementazione Python}
@@ -175,13 +180,13 @@ Prof.ssa Anna \textsc{Gottard}
 	\subsection{Implementazione}
 	
 		Come già detto, utilizzeremo il dataset IRIS che contiene 150 misurazioni di fiori iris di tre specie diverse. La figura \ref{fig:iris} schematizza le variabili del dataset che sono:
-		\begin{itemize}
+		\begin{enumerate}
 			\item Larghezza dei sepali in cm
 			\item Lunghezza dei sepali in cm
 			\item Larghezza dei petali in cm
 			\item Lunghezza dei petali in cm
 			\item Specie (setosa,versicolor,virginica)
-		\end{itemize}
+		\end{enumerate}
 		\begin{figure}
 			\begin{center}
 				\includegraphics[scale=.1]{iris}
@@ -279,10 +284,84 @@ Prof.ssa Anna \textsc{Gottard}
 			
 			Esiste anche una funzione di libreria che calcola direttamente dal dataset la \ac{PCA} con il numero di componenti scelto.
 			\codice{149}{151}
+			
 \section{Caso di studio}
-
-	\lipsum[12-13]
+	I dati sul traffico di rete raccolti per l'analisi delle intrusioni hanno in genere molte dimensioni che rendono difficile sia l'analisi che la semplice visualizzazione. La \ac{PCA} viene utilizzata per ridurre il numero di variabili dai campioni misurati per consentire analisi del traffico e visualizzazioni più semplici.
 	
+	\subsection{Il problema}
+		L'enorme diffusione di sistemi informatici connessi tramite dispositivi di telecomunicazione ha aumentato in maniera esponenziale il problema della sicurezza delle reti. Di conseguenza sono stati sviluppati Sistemi di Rilevamento delle Intrusioni (IDS) sempre più sofisticati. In generale gli IDS si dividono in due macro-categorie:
+		\begin{itemize}
+			\item Signature based
+			\item Anomaly based
+		\end{itemize}
+		La differenza tra i due è nella modalità di rilevamento delle intrusioni. In quelli signature based, si inseriscono le \emph{firme} di attacchi noti (sequenze di operazioni, di comandi,\dots ) che, quando vengono riconosciuti, provocano l'allarme. Gli IDS anomaly based sono i duali di questi in quanto conoscono il comportamento "normale" del sistema e fanno scattare l'allarme quando riconoscono un comportamento diverso da questo. I primi sono in grado di riconoscere solamente attacchi noti ma con il 100\% di successo sulle rilevazioni. I secondi sono in grado potenzialmente di riconoscere attacchi nuovi a costo di ottenere saltuariamente qualche falso allarme. Adesso vedremo un metodo alternativo che utilizza la \ac{PCA} per raggiungere gli stessi obiettivi.
+		
+		I tipi di attacchi possibili su una rete sono moltissimi e molto diversi tra di loro. Ci focalizzeremo su due grandi classi chiamate \emph{Denial of Service} (DoS) e Network Probe (NP) ed analizzeremo due tipi di attacchi per ognuna di queste classi.
+		
+		Negli attacchi DoS l'attaccante cerca di rendere la risorsa sotto attacco troppo occupata (in caso di una rete) o piena (in caso di una memoria) perché l'utente legittimo possa utilizzarla. Prima di effettuare un attacco DoS viene generalmente effettuato un test della rete sulla quale l'attaccante agirà. Questo test viene eseguito andando a scansionare tutti i computer connessi alla rete sotto attacco e, per ognuno di questi, controllare tutte le porte di comunicazione con la rete in cerca di qualche vulnerabilità. Questo è un classico esempio di Network Probe.
+		
+		\subsubsection{Attacchi di tipo DoS}
+			In questa categoria andremo ad analizzare due tipi di attacchi chiamati \emph{Smurf} e \emph{Neptune}. 
+			
+			Un attacco Smurf si basa semplicemente su una configurazione sbagliata di un computer che permette la creazione di un numero molto grande di messaggi che verranno inviati al computer della vittima con l'invio di un solo messaggio  da parte dell'attaccante (Figura \ref{fig:smurf}).			
+			\begin{figure}
+				\begin{center}
+					\includegraphics[width=\textwidth]{smurf}
+					\caption{Schema di Smurf attack}
+					\label{fig:smurf}
+				\end{center}
+			\end{figure}		
+			Tutti questi messaggi andranno a saturare la rete della vittima che non potrà più usarla in alcun modo.
+			
+			Un attacco Neptune si basa su una cattiva configurazione di un server in attesa di connessioni. Per creare una connessione, un utente deve mandare prima un messaggio per richiedere il collegamento, aspettare una risposta positiva dal server e infine mandare una conferma di ricevuta risposta. Questo procedimento si chiama \emph{three-way handshake} (Figura \ref{fig:3way}). Le connessioni stabilite vengono poi salvate dal server su una tabella delle connessioni.
+			\begin{figure}
+				\begin{center}
+					\includegraphics[width=.4\textwidth]{3wayh}
+					\caption{Neptune attack}
+					\label{fig:3way}
+				\end{center}
+			\end{figure}
+			Quello che fa un attaccante è mandare il primo pacchetto ma non mandare mai il terzo lasciando il server in attesa di effettuare la connessione senza mai potersi liberare.
+			
+		\subsubsection{Attacchi di tipo Network Probe}
+		Gli attacchi di questo tipo sono molto più semplici. Quelli che andremo ad approfondire sono il PortSweep e l'IPSweep.
+		
+		Ogni computer connesso ad una rete è raggiungibile attraverso un indirizzo chiamato indirizzo IP. Un attacco di IPSweep non fa altro che cercare sequenzialmente tutti gli IP connessi ad una rete. Una volta trovati gli indirizzi IP, per ognuno di questi esegue un PortSweep cioè una scansione sequenziale di tutte le porte di comunicazioni accessibili su ogni computer. Il grosso problema nel riconoscimento di questo tipo di attacchi è che a volte la scansione della rete o delle porte di un computer vengono eseguite legittimamente dagli amministratori di sistema per necessità di manutenzione o di controllo e quindi non possono essere impedite a priori.
+		
+	\subsection{Analisi dei dati}
+		I dati per effettuare lo studio sono presi dal "1998 DARPA Intrusion Detection Evaluation data sets" e contiene dati di utilizzo della rete in sette settimane in caso di traffico normale e in caso di vari attacchi (tra i quali quelli di nostro interesse).
+		
+		\subsubsection{Preprocessing dei dati}
+			Il dataset è stato preprocessato andando ad estrarre soltanto le informazioni riguardanti le intestazioni ("header") dei pacchetti passati dalla rete.
+			Queste intestazioni sono divise in 12 parti (che saranno le nostre variabili).
+			\begin{itemize}
+				\item IPSource - IP mittente diviso in 4 parti (un generico indirizzo IP può essere 192.168.1.1)
+				\item SPort - Porta di comunicazione del mittente
+				\item IPDest - IP destinatario diviso in 4 parti
+				\item DPort - Porta di comunicazione del destinatario
+				\item Prot - Protocollo di comunicazione utilizzato
+				\item Dim - Dimensioni del pacchetto
+			\end{itemize}
+			Sono stati creati 7 dataset, uno per ognuno dei quattro attacchi e tre per il normale traffico di rete (per cercare di comprendere diversi utilizzi benigni della rete). Data la grande dimensione dello spazio delle variabili (12 dimensioni) è molto difficile capire le relazioni che possono esserci tra di loro. Per questo motivo verrà utilizzata la \ac{PCA} con la prima e la seconda componente che descriveranno la maggior parte della varianza di qusti dati. Da notare chele prime due componenti forniscono solamente la direzione della massima varianza ma non forniranno una chiara indicazione sulla malignità/benignità del traffico ma i coefficienti della trasformazione (loading) ci forniranno questa indicazione.
+			
+	\subsection{Risultati}
+		Come accennato, i \emph{principal component loading} sono i coefficienti della trasformazione delle componenti principali. Forniscono informazioni su quanto una certa variabile influisce sulla relativa componente principale. Un coefficiente alto indicherà che quella variabile ha una forte influenza su quella componente principale e viceversa. Nel nostro caso ci focalizzeremo sulle prime due componenti principali e sui relativi loadings (specialmente sulla variabile con il loading più alto).
+		\begin{figure}
+			\begin{center}
+				\includegraphics[scale=.8]{grafico}
+				\caption{Loading e varianza delle componenti}
+				\label{fig:grafico}
+			\end{center}
+		\end{figure}
+		Nella Figura \ref{fig:grafico} possiamo vedere i due loadings più grandi in valore assoluto (SPort e DPort) e la varianza delle prime due componenti nei sette dataset.
+		
+		\subsubsection{Rilevare le intrusioni}
+			L'idea fondamentale è la seguente. Come si vede dal grafico in Figura \ref{fig:grafico} i valori dei loadings delle prime due componenti principali in caso di traffico regolare sono quasi uguali mentre in caso di attacco differiscono considerevolmente (meno nell'attacco Neptune). Si potrebbe pensare di sfruttare questa conoscenza per riconoscere gli attacchi. Se i valori dei due loadings differiscono più di una certa soglia, facciamo scattare l'allarme. 
+			
+			A seconda della grandezza di questa soglia si può avere un comportamento più "difensivo" facendo scattare falsi allarmi in caso, ad esempio, di traffico benigno straordinario (manutenzione, nuovi incarichi temporanei,\dots ) o un comportamento un po' più "permissivo" magari perdendosi qualche attacco Neptune.
+			
+			Un secondo livello di analisi potrebbe però essere fatto sula varianza. Si può notare infatti che l'attacco di tipo Neptune ha come caratteristica una enorme differenza sulla varianza delle due componenti. Si può quindi pensare di affinare il rilevamento utilizzando due livelli. Se i loadings delle due componenti differiscono di molto dalla soglia, facciamo scattare l'allarme. Se sono vicini alla soglia controlliamo anche la varianza delle due componenti che, in caso di grandissima differenza, potrebbero suggerire un traffico malevolo.
+		
 \newpage
 \section{Codice Python completo}
 	\lstinputlisting[firstline=1, lastline=59]{code/PCA.py}
