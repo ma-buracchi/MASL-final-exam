@@ -34,11 +34,7 @@ y = df.ix[:,4].values
 # print(X)
 # print(y)
 
-# creazione istogrammi
-label_dict = {1: 'Iris-Setosa',
-              2: 'Iris-Versicolor',
-              3: 'Iris-Virgnica'}
- 
+# creazione istogrammi 
 feature_dict = {0: 'sepal length [cm]',
                 1: 'sepal width [cm]',
                 2: 'petal length [cm]',
