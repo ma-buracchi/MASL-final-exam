@@ -114,16 +114,49 @@ Prof.ssa Anna \textsc{Gottard}
 
 \section{Principal Component Analysis}
 
-	\lipsum[1]
+	La \ac{PCA} è un trattamento matematico della matrice dei dati il cui scopo è rappresentare la variazione presente nelle tante variabili utilizzando un	numero k molto più piccolo di \emph{“fattori”} o \emph{“componenti principali”}. Si costruisce un nuovo spazio su cui rappresentare i campioni	ridefinendo gli assi utilizzando le componenti principali al posto delle variabili originali. L’uso di questi nuovi assi permette di rappresentare la vera natura multivariata dei dati in un numero relativamente piccolo di dimensioni e di usare questa rappresentazione per identificare la struttura dei dati stessi.  
 	
-	\subsection{Subsection 1}
-
-		\lipsum[1] % Dummy text
-
-	\subsection{Subsection 2}
-
-		\lipsum[2] % Dummy text
-
+	\subsection{Cosa fa?}
+		Supponiamo di aver misurato il valore di due variabili su 40 campioni come in Figura \ref{fig:plot1} 
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[scale=.5]{plotTeoria}
+				\caption{Plot variabili A e B}
+				\label{fig:plot1}
+			\end{center}
+		\end{figure}
+		Vogliamo studiare le relazioni tra i campioni. Le distanze tra i campioni sono usate per definire similarità e differenze. In altre parole, lo scopo della \ac{PCA} è di descrivere le distanze fra i punti (distribuzione, variabilità) utilizzando il minor numero di dimensioni possibili. Questo scopo si raggiunge costruendo assi che si allineano coi dati. Come si vede dal grafico nessuna delle variabili originali descrive completamente la variabilità all’interno dei dati stessi. 
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[scale=.6]{proiezione}
+				\caption{Proiezione variabili A e B}
+				\label{fig:proiezione}
+			\end{center}
+		\end{figure}
+		Se prendiamo come componenti principali però, le linee blu in figura \ref{fig:componenti}, la prima componente principale descrive una quantità della variabilità originale maggiore di quella spiegata da ciascuna delle due variabili prese singolarmente. Essa spiega la massima percentuale della variabilità presente nei dati rappresentabile in una sola dimensione. Questa percentuale di variabilità spiegata può essere calcolata attraverso la varianza. La varianza è infatti un indice della dispersione dei dati lungo una particolare direzione ed è indipendente dal sistema di riferimento: una rotazione degli assi mantiene inalterata la varianza totale all’interno dei dati. 
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[scale=.6]{componenti}
+				\caption{Componenti principali}
+				\label{fig:componenti}
+			\end{center}
+		\end{figure}
+		In questo esempio, la prima componente principale cattura praticamente tutta la variabilità presente nei dati (99.83\%) mentre la seconda descrive la rimanente variazione (0.17\%). Questa considerazione può essere generalizzata: le componenti principali successive spiegano una sempre minore percentuale della variabilità originale. Seguendo questo principio è possibile dire che le ultime componenti principali descrivono principalmente \emph{rumore}. Come si effettua la \ac{PCA}?
+		
+		\subsubsection{Come funziona?}
+			
+		\begin{description}
+			\item[Standardizzazione:] Standardizziamo i dati (media = 0 e varianza = 1). In questo modo possiamo lavorare con variabili che hanno scale e unità di misura differenti.
+			\item[Calcolo della covarianza/correlazione:] Calcoliamo la matrice $\mathcal{S}$ di covarianza. La covarianza di due variabili indica quanto le due variabili si muovono insieme.
+			$$\mathcal{S} = \frac{1}{n-1} \sum_{1}^{n} (x-\mu)(x-\mu)^T$$
+			In alternativa possiamo utilizzare anche la matrice di correlazione.
+			\item[Calcolo autovalori/autovettori:] Calcoliamo gli autovalori e gli autovettori della matrice di covarianza. Per definizione $$\mathcal{S} \times v = \lambda \times v$$
+			
+			Ognuno di questi autovettori corrisponde ad un autovalore la cui grandezza indica quanta varianza viene spiegata da quell'autovettore. Ordiniamo quindi gli autovalori in ordine decrescente e prendiamo i primi k. Chiamiamo $\mathcal{V}$ la matrice degli autovettori risultante.
+			\item[Ruotiamo i dati:] Per convertire le osservazioni nel nuovo sistema di assi, moltiplichiamo i dati originali per gli autovettori che indicano la direzione dei nuovi assi (componenti principali). Questi dati ruotati vengono chiamati \emph{score}. $$Sc = X \times \mathcal{V}$$
+			\item[Dati ridotti:] A questo punto è possibile utilizzare i nuovi dati.
+		\end{description}
+	
 \section{Implementazione Python}
 
 	Passiamo adesso all'implementazione di un piccolo esempio di \ac{PCA} sul dataset \emph{IRIS}. Per questa realizzazione è stato scelto il linguaggio \emph{Python} con la relativa libreria \emph{pandas}.
@@ -243,6 +276,9 @@ Prof.ssa Anna \textsc{Gottard}
 					\label{img:PCA}
 				\end{center}
 			\end{figure}
+			
+			Esiste anche una funzione di libreria che calcola direttamente dal dataset la \ac{PCA} con il numero di componenti scelto.
+			\codice{149}{151}
 \section{Caso di studio}
 
 	\lipsum[12-13]
