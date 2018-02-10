@@ -16,35 +16,34 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[12pt]{article} % Default font size is 12pt, it can be changed here
+\documentclass[12pt]{article}
 
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{geometry} % Required to change the page size to A4
-\usepackage{graphicx} % Required for including pictures
-\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
-\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{acronym}
-\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage{lipsum}
 \usepackage{listings}
+\usepackage{mathtools}
 
-\geometry{a4paper} % Set the page size to be A4 as opposed to the default US Letter
+\geometry{a4paper}
 
-\linespread{1.2} % Line spacing
+\linespread{1.1}
 
-%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
-
-\graphicspath{{img/}} % Specifies the directory where pictures are stored
+\graphicspath{{img/}}
 
 \definecolor{back}{rgb}{1,0.93,0.76} 
 \lstset{ %
 	backgroundcolor=\color{back},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-	basicstyle=\tiny,        	% the size of the fonts that are used for the code
+	basicstyle=\tiny,        		% the size of the fonts that are used for the code
 	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
 	breaklines=true,                % sets automatic line breaking
 	captionpos=b,                   % sets the caption-position to bottom
-	commentstyle=\color{gray},   % comment style
+	commentstyle=\color{gray},   	% comment style
 	frame=single,	                % adds a frame around the code
 	keepspaces=true,                % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
 	keywordstyle=\color{blue},      % keyword style
@@ -57,11 +56,13 @@
 	showstringspaces=false,         % underline spaces within strings only
 	showtabs=false,                 % show tabs within strings adding particular underscores
 	stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
-	stringstyle=\color{OrangeRed},    % string literal style
+	stringstyle=\color{OrangeRed},  % string literal style
 	tabsize=2                   	% sets default tabsize to 2 spaces
 }
 
 \acrodef{PCA}{\emph{Principal Component Analysis}}
+
+\newcommand{\codice}[2]{\lstinputlisting[firstline=#1, lastline=#2]{code/PCA.py}}
 
 \begin{document}
 
@@ -71,36 +72,33 @@
 
 \begin{titlepage}
 
-\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 
-\center % Center everything on the page
+\center
 
-\textsc{\LARGE Università degli studi di Firenze}\\[1.5cm] % Name of your university/college
-\textsc{\Large Corso di Laurea Magistrale in Informatica}\\[0.5cm] % Major heading such as course name
-\textsc{\large Multivariate Analysis and Statistical Learning}\\[0.5cm] % Minor heading such as course title
+\textsc{\LARGE Università degli studi di Firenze}\\[1.5cm]
+\textsc{\Large Corso di Laurea Magistrale in Informatica}\\[0.5cm]
+\textsc{\large Multivariate Analysis and Statistical Learning}\\[0.5cm]
 
 \HRule \\[0.4cm]
-{ \huge \bfseries Principal Component Analysis: dalla teoria alla pratica}\\[0.4cm] % Title of your document
+{ \huge \bfseries Principal Component Analysis: dalla teoria alla pratica}\\[0.4cm]
 \HRule \\[1.5cm]
 
 \begin{minipage}{0.4\textwidth}
 \begin{flushleft} \large
 \emph{Autore:}\\
-Marco \textsc{Buracchi} % Your name
+Marco \textsc{Buracchi}
 \end{flushleft}
 \end{minipage}
 ~
 \begin{minipage}{0.4\textwidth}
 \begin{flushright} \large
 \emph{Docente:} \\
-Prof.ssa Anna \textsc{Gottard} % Supervisor's Name
+Prof.ssa Anna \textsc{Gottard}
 \end{flushright}
 \end{minipage}\\[4cm]
 
 {\large \today}\\[3cm] % Date, change the \today to a set date if you want to be precise
-
-%\includegraphics{Logo}\\[1cm] % Include a department/university logo - this will require the graphicx package
-
 \vfill % Fill the rest of the page with whitespace
 
 \end{titlepage}
@@ -108,32 +106,29 @@ Prof.ssa Anna \textsc{Gottard} % Supervisor's Name
 %----------------------------------------------------------------------------------------
 %	TABLE OF CONTENTS
 %----------------------------------------------------------------------------------------
-
-\tableofcontents % Include a table of contents
-
-\newpage % Begins the essay on a new page instead of on the same page as the table of contents 
-
+\tableofcontents
+\newpage
 %----------------------------------------------------------------------------------------
 %	TESTO
 %----------------------------------------------------------------------------------------
 
-\section{Principal Component Analysis} % Major section
+\section{Principal Component Analysis}
 
 	\lipsum[1]
 	
-	\subsection{Subsection 1} % Sub-section
+	\subsection{Subsection 1}
 
 		\lipsum[1] % Dummy text
 
-	\subsection{Subsection 2} % Sub-section
+	\subsection{Subsection 2}
 
 		\lipsum[2] % Dummy text
 
-\section{Implementazione Python} % Major section
+\section{Implementazione Python}
 
 	Passiamo adesso all'implementazione di un piccolo esempio di \ac{PCA} sul dataset \emph{IRIS}. Per questa realizzazione è stato scelto il linguaggio \emph{Python} con la relativa libreria \emph{pandas}.
 
-	\subsection{PANDAS} % Sub-section
+	\subsection{PANDAS}
 
 		pandas è una libreria Python open-source, ad alte prestazioni e con licenza BSD che fornisce strutture dati e strumenti per l'analisi facili da usare.
 		\begin{wrapfigure}{l}{0.3\textwidth} % Inline image example
@@ -144,7 +139,7 @@ Prof.ssa Anna \textsc{Gottard} % Supervisor's Name
 		\`{E} un progetto sponsorizzato da NumFocus. Questo assicura lo sviluppo continuo e a livello mondiale e permette anche di aiutare gli sviluppatori con donazioni o citazioni.Permette di lavorare con dati organizzati in maniera \emph{relazionale} o \emph{etichettata} in maniera intuitiva. Le sue due strutture dati principali sono le serie (unidimensionali) e i dataframe (bidimensionali). Per il nostro esempio utilizzeremo questa seconda struttura.
 		
 
-	\subsection{Implementazione} % Sub-sub-section
+	\subsection{Implementazione}
 	
 		Come già detto, utilizzeremo il dataset IRIS che contiene 150 misurazioni di fiori iris di tre specie diverse. La figura \ref{fig:iris} schematizza le variabili del dataset che sono:
 		\begin{itemize}
@@ -162,24 +157,93 @@ Prof.ssa Anna \textsc{Gottard} % Supervisor's Name
 			\end{center}
 		\end{figure}
 
-		
+		\subsubsection{Preparazione dataset}
 
-		\subsubsection{Subsubsection 3} % Sub-sub-section
+			\begin{description}
 
-			\begin{description} % Numbered list example
-
-				\item[First] \hfill \\
-				\lipsum[9] % Dummy text
+				\item[Caricamento dataset] \hfill \\
+				Come prima cosa, scarichiamo il dataset dall'archivio della UCI (Università della California) e carichiamolo assegnando i nomi desiderati alle colonne e rimuovendo i valori NA.
 				
-				\item[Second] \hfill \\
-				\lipsum[10] % Dummy text
+				\lstinputlisting[firstline=16, lastline=25]{code/PCA.py}
 				
-				\item[Third] \hfill \\
-				\lipsum[11] % Dummy text
-			
+				\begin{figure}[H]
+					\begin{center}
+						\includegraphics[scale=.7]{tab}
+						\caption{Dataset memorizzato}
+						\label{fig:dataset}
+					\end{center}
+				\end{figure}
+				
+				Dopo questi comandi otteniamo il risultato visibile in figura \ref{fig:dataset}. Dividiamo i valori numerici dalla specie creando una matrice $X \in \mathcal{M}^{150x4}$ e un vettore $y \in \mathcal{M}^{150x1}$
+				
+				\codice{30}{32}
+				
+				\item[Analisi descrittiva] \hfill \\
+				Per avere un'idea di come si distribuiscono le tre classi di fiori sulle varie caratteristiche, creiamo qualche istogramma.				
+				\codice{37}{56}				
+				\begin{figure}
+					\begin{center}
+						\includegraphics[scale=.5]{isto}
+						\caption{Analisi descrittiva}
+						\label{fig:isto}
+					\end{center}
+				\end{figure}				
+				Il risultato è visibile in figura \ref{fig:isto}
+							
+				\item[Standardizzazione] \hfill \\
+				Standardizziamo i dati in scala unitaria (media = 0 e varianza = 1) per migliorare le performance.
+				\codice{58}{59}
 			\end{description} 
-
-\section{Caso di studio} % Major section
+		
+		\subsubsection{Calcolo autovalori e autovettori}
+		
+			Calcoliamo gli autovettori e gli autovalori della matrice di covarianza e della matrice di correlazione. Possiamo calcolarli utilizzando la formula teorica, utilizzando una funzione di libreria oppure applicando la decomposizione a valori singolari. In ogni caso, i risultati saranno gli stessi (tranne nel caso della SVD che differisce solo per alcuni segni dato che la scomposizione è unica a meno di matrici di fase).
+			\codice{61}{94}
+			La matrice che si ottiene è la seguente:
+			$$\begin{bmatrix}
+				0.52237162 & -0.37231836 & -0.72101681 & 0.26199559\\
+				-0.26335492 & -0.92555649 & 0.24203288 & -0.12413481\\
+				0.58125401 & -0.02109478 & 0.14089226 & -0.80115427\\
+				0.56561105 & -0.06541577 & 0.6338014 & 0.52354627\\
+			\end{bmatrix}$$
+			
+		\subsubsection{Selezione delle componenti}		
+			Vogliamo ridurre le dimensioni dello spazio delle variabili proiettandolo in un sottospazio più piccolo. I suoi assi saranno gli autovettori appena calcolati. Purtroppo, in questo momento definiscono solamente la direzione perché sono tutti a lunghezza unitaria.	Per stabilire quale può essere abbandonato senza perdere troppa informazione controlliamo ed ordiniamo i rispettivi autovalori.
+			\codice{96}{105}
+			A questo punto calcoliamo la varianza spiegata delle singole componenti e mostriamola in un grafico (Figura \ref{fig:varSpieg}).
+			\codice{108}{123}
+			\begin{figure}
+				\begin{center}
+					\includegraphics[scale=.5]{istoVarianza}
+					\caption{Varianza spiegata}
+					\label{fig:varSpieg}
+				\end{center}
+			\end{figure}
+			Dal grafico possiamo dedurre che la maggior parte della varianza può essere spiegata dalla prima componente (72.77\%). Anche la seconda porta un po' di informazione (23.03\%) mentre la terza e la quarta possono tranquillamente essere rimosse senza perdere troppa informazione.
+			
+		\subsubsection{Matrice di proiezione}
+			Per costruire la matrice di proiezione che ci permetterà di passare da uno spazio 4-dimensionale ad uno 2-dimensionale concateniamo le prime due componenti degli autovettori.
+			\codice{125}{127}
+			La matrice risultante sarà quindi:
+			$$W = \begin{bmatrix}
+				0.52237162 & -0.37231836\\
+				-0.26335492 & -0.92555649\\
+				0.58125401 & -0.02109478\\
+				0.56561105 & -0.06541577\\
+			\end{bmatrix}$$
+			
+		\subsubsection{Proiezione nel nuovo spazio}
+			Come ultimo passo, utilizzeremo la matrice $W$ per trasformare i nostri campioni nel nuovo sottospazio con l'equazione $$Y = X\times W \qquad Y \in \mathcal{M}^{150x2}$$
+			\codice{132}{133}
+			Dopo l'applicazione della \ac{PCA} otteniamo uno spazio bidimensionale dove i campioni sono distribuiti lungo i nuovi assi (Figura \ref{img:PCA}).
+			\begin{figure}
+				\begin{center}
+					\includegraphics[scale=.5]{PCA}
+					\caption{Distribuzione campioni dopo PCA}
+					\label{img:PCA}
+				\end{center}
+			\end{figure}
+\section{Caso di studio}
 
 	\lipsum[12-13]
 	
