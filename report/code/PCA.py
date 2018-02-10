@@ -22,7 +22,8 @@ df = pd.read_csv(
 # scelgo solamente le colonne con i valori di interesse
 df.columns=['sepal_len', 'sepal_wid', 'petal_len', 'petal_wid', 'class'] 
 df.dropna(how="all", inplace=True) # Elimina i valori NA
-df.tail()
+print(df.tail()) #visualizza ultime 5 righe
+separate()
 
 # print(df)
 
@@ -33,11 +34,7 @@ y = df.ix[:,4].values
 # print(X)
 # print(y)
 
-# creazione istogrammi
-label_dict = {1: 'Iris-Setosa',
-              2: 'Iris-Versicolor',
-              3: 'Iris-Virgnica'}
- 
+# creazione istogrammi 
 feature_dict = {0: 'sepal length [cm]',
                 1: 'sepal width [cm]',
                 2: 'petal length [cm]',
