@@ -149,7 +149,7 @@ Prof.ssa Anna \textsc{Gottard}
 			\item[Standardizzazione:] \hfill \\
 			 Standardizziamo i dati (media = 0 e varianza = 1). In questo modo possiamo lavorare con variabili che hanno scale e unità di misura differenti.
 			\item[Calcolo della covarianza/correlazione:] \hfill \\
-			 Calcoliamo la matrice $\mathcal{S}$ di covarianza. La covarianza di due variabili indica quanto le due variabili si muovono insieme.
+			Calcoliamo la matrice $\mathcal{S}$ di covarianza. La covarianza di due variabili indica quanto le due variabili si influenzino a vicenda.
 			$$\mathcal{S} = \frac{1}{n-1} \sum_{1}^{n} (x-\mu)(x-\mu)^T$$
 			In alternativa possiamo utilizzare anche la matrice di correlazione.
 			\item[Calcolo autovalori/autovettori:] \hfill \\ 
@@ -286,10 +286,10 @@ Prof.ssa Anna \textsc{Gottard}
 			\codice{149}{151}
 			
 \section{Caso di studio}
-	I dati sul traffico di rete raccolti per l'analisi delle intrusioni hanno in genere molte dimensioni che rendono difficile sia l'analisi che la semplice visualizzazione. La \ac{PCA} viene utilizzata per ridurre il numero di variabili dai campioni misurati per consentire analisi del traffico e visualizzazioni più semplici.
+	L'enorme diffusione di sistemi informatici connessi tramite dispositivi di telecomunicazione ha aumentato in maniera esponenziale il problema della sicurezza delle reti. Purtoppo i dati sul traffico di rete raccolti per l'analisi delle intrusioni hanno in genere molte dimensioni che rendono difficile sia l'analisi che la semplice visualizzazione. La \ac{PCA} viene utilizzata per ridurre il numero di variabili dai campioni misurati per consentire analisi del traffico e visualizzazioni più semplici.
 	
 	\subsection{Il problema}
-		L'enorme diffusione di sistemi informatici connessi tramite dispositivi di telecomunicazione ha aumentato in maniera esponenziale il problema della sicurezza delle reti. Di conseguenza sono stati sviluppati Sistemi di Rilevamento delle Intrusioni (IDS) sempre più sofisticati. In generale gli IDS si dividono in due macro-categorie:
+		Negli anni, per contrastare il sempre maggior numero di compromissioni di sistemi informatici da parte di utenti malintenzionati (vedi ad esempio i molti casi di documenti, filmati, foto o informazioni personali rubati da servizi cloud) sono stati sviluppati Sistemi di Rilevamento delle Intrusioni (IDS) sempre più sofisticati. In generale questi sistemi si dividono in due macro-categorie:
 		\begin{itemize}
 			\item Signature based
 			\item Anomaly based
@@ -342,7 +342,7 @@ Prof.ssa Anna \textsc{Gottard}
 				\item Prot - Protocollo di comunicazione utilizzato
 				\item Dim - Dimensioni del pacchetto
 			\end{itemize}
-			Sono stati creati 7 dataset, uno per ognuno dei quattro attacchi e tre per il normale traffico di rete (per cercare di comprendere diversi utilizzi benigni della rete). Data la grande dimensione dello spazio delle variabili (12 dimensioni) è molto difficile capire le relazioni che possono esserci tra di loro. Per questo motivo verrà utilizzata la \ac{PCA} con la prima e la seconda componente che descriveranno la maggior parte della varianza di qusti dati. Da notare chele prime due componenti forniscono solamente la direzione della massima varianza ma non forniranno una chiara indicazione sulla malignità/benignità del traffico ma i coefficienti della trasformazione (loading) ci forniranno questa indicazione.
+			Sono stati creati 7 dataset, uno per ognuno dei quattro attacchi e tre per il normale traffico di rete (per cercare di comprendere diversi utilizzi benigni della rete). Data la grande dimensione dello spazio delle variabili (12 dimensioni) è molto difficile capire le relazioni che possono esserci tra di loro. Per questo motivo verrà utilizzata la \ac{PCA} con la prima e la seconda componente che descriveranno la maggior parte della varianza di qusti dati. Da notare che le prime due componenti forniscono solamente la direzione della massima varianza ma non forniranno una chiara indicazione sulla malignità/benignità del traffico ma i coefficienti della trasformazione (loading) ci forniranno questa indicazione.
 			
 	\subsection{Risultati}
 		Come accennato, i \emph{principal component loading} sono i coefficienti della trasformazione delle componenti principali. Forniscono informazioni su quanto una certa variabile influisce sulla relativa componente principale. Un coefficiente alto indicherà che quella variabile ha una forte influenza su quella componente principale e viceversa. Nel nostro caso ci focalizzeremo sulle prime due componenti principali e sui relativi loadings (specialmente sulla variabile con il loading più alto).
