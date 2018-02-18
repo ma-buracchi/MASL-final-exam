@@ -9,10 +9,6 @@
 \usepackage{amsfonts}		%font matematici
 \usepackage{amssymb}		%altri simboli matematici
 \usepackage{tikz}			%grafica
-\usepackage{subfloat}		%affiancare figura
-\usepackage{cancel}			%simbolo di semplificazione
-\usepackage{pdfpages}		%incorporare pdf
-\usepackage{soul}			%testo barrato
 \usepackage{listings}		%codice
 
 
@@ -42,6 +38,7 @@
 }
 
 \newcommand{\codice}[2]{\lstinputlisting[firstline=#1, lastline=#2]{code/PCA.py}}
+
 \newcommand{\figcen}[2]{
 	\begin{figure}
 		\begin{center}
@@ -84,16 +81,18 @@
 
 \section{Principal Component Analysis}
 
-	\begin{frame}{PCA}
-		\begin{itemize}
-			\item Trasformazione lineare della matrice dei dati $\mathcal{X}$
-			\item Misurazione della variazione delle variabili utilizzando un numero minore di "fattori"
-			\item Trasportare il problema in uno spazio \emph{k}-variato (generalmente bi-trivariato)
-			\item Semplificazione di visualizzazione e lettura dei dati
-		\end{itemize}
-	\end{frame}
-
 	\subsection{Cosa fa?}
+	
+		\begin{frame}{PCA}
+			\begin{itemize}
+				\item Trasformazione lineare della matrice dei dati $\mathcal{X}$
+				\item Misurazione della variazione delle variabili utilizzando un numero minore di "fattori"
+				\item Trasportare il problema in uno spazio \emph{k}-variato (generalmente bi-trivariato)
+				\item Semplificazione di visualizzazione e lettura dei dati
+			\end{itemize}
+		\end{frame}
+
+
 		\begin{frame}{Esempio}
 			\begin{columns}
 				\begin{column}{0.5\textwidth}
@@ -142,6 +141,7 @@
 		\end{frame}
 		
 	\subsection{Come funziona?}
+	
 		\begin{frame}{Funzionamento}
 			\begin{enumerate}
 				\item Standardizzazione
@@ -186,54 +186,54 @@
 
 	\subsection{Strumenti}
 
-	\begin{frame}{Strumenti utilizzati}
-		\begin{itemize}
-			\item Linguaggio: Python
-			\item Libreria per l'analisi dei dati: \emph{PANDAS}
-			\item Dataset: IRIS
-		\end{itemize}
-	\end{frame}
-
-	
-	\begin{frame}{PANDAS}
-		\begin{itemize}
-			\item Libreria Python, open source, ad alte prestazioni e con licenza BSD
-			\item Strutture dati e strumenti per l'analisi facili da usare (R-like)
+		\begin{frame}{Strumenti utilizzati}
 			\begin{itemize}
-				\footnotesize
-				\item Serie (unidimensionali)
-				\item Dataframe (bidimensionali)
+				\item Linguaggio: Python
+				\item Libreria per l'analisi dei dati: \emph{PANDAS}
+				\item Dataset: IRIS
 			\end{itemize}
-			\item Dati organizzati in maniera \emph{relazionale} o \emph{etichettata}
-			\item Sponsorizzato da NumFocus
+		\end{frame}
+	
+		
+		\begin{frame}{PANDAS}
+			\begin{itemize}
+				\item Libreria Python, open source, ad alte prestazioni e con licenza BSD
+				\item Strutture dati e strumenti per l'analisi facili da usare (R-like)
+				\begin{itemize}
+					\footnotesize
+					\item Serie (unidimensionali)
+					\item Dataframe (bidimensionali)
+				\end{itemize}
+				\item Dati organizzati in maniera \emph{relazionale} o \emph{etichettata}
+				\item Sponsorizzato da NumFocus
+				\begin{columns}
+					\begin{column}{.3\textwidth}
+						\figcen{\columnwidth}{numFocus}
+					\end{column}
+					\begin{column}{.7\textwidth}
+						\begin{itemize}						
+							\footnotesize
+							\item sviluppo continuo, a livello mondiale e sistema di donazioni a supporto
+						\end{itemize}						
+					\end{column}
+				\end{columns}
+			\end{itemize}
+		\end{frame}
+		
+		\begin{frame}{Dataset}
 			\begin{columns}
-				\begin{column}{.3\textwidth}
-					\figcen{\columnwidth}{numFocus}
+				\begin{column}{.6\textwidth}
+					\figcen{\columnwidth}{iris}
 				\end{column}
-				\begin{column}{.7\textwidth}
-					\begin{itemize}						
-						\footnotesize
-						\item sviluppo continuo, a livello mondiale e sistema di donazioni a supporto
-					\end{itemize}						
+				\begin{column}{.5\textwidth}
+					\begin{itemize}
+						\item Dataset IRIS
+						\item 150 misurazioni di fiori iris 
+						\item 3 diverse specie
+					\end{itemize}
 				\end{column}
 			\end{columns}
-		\end{itemize}
-	\end{frame}
-	
-	\begin{frame}{Dataset}
-		\begin{columns}
-			\begin{column}{.6\textwidth}
-				\figcen{\columnwidth}{iris}
-			\end{column}
-			\begin{column}{.5\textwidth}
-				\begin{itemize}
-					\item Dataset IRIS
-					\item 150 misurazioni di fiori iris 
-					\item 3 diverse specie
-				\end{itemize}
-			\end{column}
-		\end{columns}
-	\end{frame}
+		\end{frame}
 
 	\subsection{Implementazione}
 	
@@ -340,11 +340,78 @@
 		\end{frame}
 
 \section{Caso di studio}
-	\begin{frame}{Caso di studio}
-		Caso di studio
-	\end{frame}
+	
+	\subsection{Problema}
+	
+		\begin{frame}{Problema}
+			\figcen{.5\textwidth}{iot}
+			\begin{itemize}
+				\item Miliardi di dispositivi informatici connessi in rete nel mondo
+				\item Innumerevoli casi di intrusioni malevole in tali sistemi
+				\item Il problema della sicurezza delle reti è molto serio
+				\item I dati relativi al traffico di rete hanno in genere molte dimensioni
+				\item Difficili da visualizzare e analizzare
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}{Intrusion Detection Systems}
+			\figcen{.5\textwidth}{guardia}
+		\end{frame}
+	
+		\begin{frame}{IDS}
+			\begin{itemize}
+				\item Gli IDS si dividono in due grandi categorie
+				\begin{enumerate}
+					\footnotesize
+					\item Signature based
+					\begin{itemize}
+						\footnotesize
+						\item Riconoscono le \emph{firme} degli attacchi noti
+						\item 100\% di successo delle rilevazioni
+						\item Riconosco solo attacchi noti
+					\end{itemize}
+					\item Anomaly based
+					\begin{itemize}
+						\footnotesize
+						\item Riconoscono un comportamento diverso dal \emph{normale}
+						\item Possono riconoscere attacchi nuovi
+						\item Possono creare falsi allarmi o non riconoscere qualche attacco
+					\end{itemize}
+				\end{enumerate}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}{Idea}
+			\figcen{.3\textwidth}{idea}
+			\begin{itemize}
+				\item Possiamo costruire un IDS basato sulla PCA?
+				\item Capiamo un po' meglio come funzionano i principali attacchi
+			\end{itemize}
+		\end{frame}
 
-	\subsection{Attacchi}
+		\begin{frame}{Tipi di attacchi}
+			\begin{itemize}
+				\item Ci focalizzeremo su due tipi di attacchi
+				\begin{enumerate}
+					\footnotesize
+					\item Denial of Service (DoS)
+					\begin{itemize}
+						\footnotesize
+						\item Si cerca di rendere la risorsa sotto attacco troppo occupata (rete) o piena (memoria) per essere utilizzata
+					\end{itemize}
+					\item Network Probe (NP)
+					\begin{itemize}
+						\footnotesize
+						\item Scansione sistematica di tutti i dispositivi connessi alla rete e delle loro porte di comunicazione
+					\end{itemize}
+				\end{enumerate}
+			\end{itemize}
+		\end{frame}
+	
+		\begin{frame}{Attacchi DoS}
+			\figcen{.8\textwidth}{dos}
+		\end{frame}
+	
 		\begin{frame}{Attacco SMURF}
 			\begin{figure}
 				\begin{center}
@@ -352,6 +419,7 @@
 				\end{center}
 			\end{figure}
 		\end{frame}
+	
 		\begin{frame}{Attacco Neptune}
 			\begin{figure}
 				\begin{center}
@@ -360,19 +428,63 @@
 			\end{figure}
 		\end{frame}
 		
-		\begin{frame}{Attacchi Network Probe}
-			NP
+		\begin{frame}{Attacchi NP}
+			\begin{itemize}
+				\item IPSweep
+				\begin{itemize}
+					\item Scansione sistematica di tutti gli IP connessi alla rete
+				\end{itemize}
+				\item PortSweep
+				\begin{itemize}
+					\item Scansione sistematica di tutte le porte di comunicazione dei sistemi scoperti al passo precedente
+				\end{itemize}
+			\end{itemize}
 		\end{frame}
 	
-	\subsection{Analisi}
-		\begin{frame}{Analisi}
-			Preprocessing
+	\subsection{Esperimento}
+	
+		\begin{frame}{Analisi dei dati}
+			\begin{itemize}
+				\item 1998 DARPA Intrusion Detection Evaluation data sets
+				\item Utilizzo della rete in 7 settimane
+				\item Presente traffico normale e vari attacchi (tra cui quelli ai quali siamo interessati)
+				\item Preprocessing (estrazione delle intestazioni o \emph{header} dei pacchetti di rete)
+				\item 12 variabili rilevanti
+			\end{itemize}				
+		\end{frame}
+	
+		\begin{frame}{Esperimento}
+			\begin{itemize}
+				\item Creati 7 dataset (uno per ogni attacco e 3 di traffico normale)
+				\item Applicata la PCA ad ognuno di essi per passare da 12 a 2 dimensioni
+				\item Le componenti forniranno la direzione della massima varianza
+				\item I coefficienti della trasformazione (\emph{loading}) ci indicheranno la malignità/benignità del traffico
+			\end{itemize}				
 		\end{frame}
 	
 	\subsection{Risultati}
-		\begin{frame}{Rilevazione}
-			Rilevazione
+		
+		\begin{frame}{Loadings}
+			\begin{itemize}
+				\item I loadings forniscono informazioni su quanto ogni variabile influisce sulla relativa componente principale (che è una loro combinazione lineare)
+				\item Focalizzeremo l'attenzione sulle prime due componenti principali e sui relativi loadings
+			\end{itemize}				
 		\end{frame}
+	
+		\begin{frame}{Loadings}
+			\figcen{.7\textwidth}{grafico}		
+		\end{frame}
+	
+	{ % all template changes are local to this group.
+		\setbeamertemplate{navigation symbols}{}
+		\begin{frame}[plain]
+			\begin{tikzpicture}[remember picture,overlay]
+			\node[at=(current page.center)] {
+				\includegraphics[scale=0.45]{img/All}
+			};
+			\end{tikzpicture}
+		\end{frame}
+}
 
 	\begin{frame}{Bibliografia}
 	{
