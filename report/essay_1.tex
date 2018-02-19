@@ -30,6 +30,8 @@
 \usepackage{listings}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\usepackage[object=vectorian]{pgfornament}
+\usepackage{tikz}
 
 \geometry{a4paper}
 
@@ -64,6 +66,18 @@
 \acrodef{PCA}{\emph{Principal Component Analysis}}
 
 \newcommand{\codice}[2]{\lstinputlisting[firstline=#1, lastline=#2]{code/PCA.py}}
+
+\newcommand{\sectionline}{
+	\begin{center}
+		\resizebox{0.5\linewidth}{1ex}{
+			\begin{tikzpicture}
+			\node  (C) at (0,0) {};
+			\node (D) at (9,0) {};
+			\path (C) to [ornament=83] (D);
+			\end{tikzpicture}
+		}
+	\end{center}
+}
 
 \begin{document}
 
@@ -162,6 +176,8 @@ Prof.ssa Anna \textsc{Gottard}
 			\item[Dati ridotti:] \hfill \\
 			A questo punto è possibile utilizzare i nuovi dati.
 		\end{description}
+	
+	\sectionline
 	
 \section{Implementazione Python}
 
@@ -286,6 +302,7 @@ Prof.ssa Anna \textsc{Gottard}
 			
 			Esiste anche una funzione di libreria che calcola direttamente dal dataset la \ac{PCA} con il numero di componenti scelto e raggiunge lo stesso risultato.
 			\codice{149}{151}
+	\sectionline
 			
 \section{Caso di studio}
 	L'enorme diffusione di sistemi informatici connessi tramite dispositivi di telecomunicazione ha aumentato in maniera esponenziale il problema della sicurezza delle reti. Purtoppo i dati sul traffico di rete raccolti per l'analisi delle intrusioni hanno in genere molte dimensioni che rendono difficile sia l'analisi che la semplice visualizzazione. La \ac{PCA} può essere utilizzata per ridurre il numero di variabili dai campioni misurati per consentire analisi del traffico e visualizzazioni più semplici.
@@ -364,6 +381,8 @@ Prof.ssa Anna \textsc{Gottard}
 			A seconda della grandezza di questa soglia si può avere un comportamento più "difensivo" facendo scattare falsi allarmi in caso, ad esempio, di traffico benigno straordinario (manutenzione, nuovi incarichi temporanei,\dots ) o un comportamento un po' più "permissivo" magari perdendosi qualche attacco Neptune.
 			
 			Un secondo livello di analisi potrebbe però essere fatto sula varianza. Si può notare infatti che l'attacco di tipo Neptune ha come caratteristica una enorme differenza sulla varianza delle due componenti. Si può quindi pensare di affinare il rilevamento utilizzando due livelli. Se i loadings delle due componenti differiscono di molto dalla soglia, facciamo scattare l'allarme. Se sono vicini alla soglia controlliamo anche la varianza delle due componenti che, in caso di grandissima differenza, potrebbero suggerire un traffico malevolo.
+
+	\sectionline
 			
 \section{Conclusioni}
 	In questo progetto è stato affrontato il tema della PCA, una tecnica che permette di descrivere la maggior percentuale di varianza di un insieme di dati utilizzando il minor numero possibile di variabili.
