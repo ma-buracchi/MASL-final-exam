@@ -364,15 +364,23 @@ Prof.ssa Anna \textsc{Gottard}
 			A seconda della grandezza di questa soglia si può avere un comportamento più "difensivo" facendo scattare falsi allarmi in caso, ad esempio, di traffico benigno straordinario (manutenzione, nuovi incarichi temporanei,\dots ) o un comportamento un po' più "permissivo" magari perdendosi qualche attacco Neptune.
 			
 			Un secondo livello di analisi potrebbe però essere fatto sula varianza. Si può notare infatti che l'attacco di tipo Neptune ha come caratteristica una enorme differenza sulla varianza delle due componenti. Si può quindi pensare di affinare il rilevamento utilizzando due livelli. Se i loadings delle due componenti differiscono di molto dalla soglia, facciamo scattare l'allarme. Se sono vicini alla soglia controlliamo anche la varianza delle due componenti che, in caso di grandissima differenza, potrebbero suggerire un traffico malevolo.
+			
+\section{Conclusioni}
+	In questo progetto è stato affrontato il tema della PCA, una tecnica che permette di descrivere la maggior percentuale di varianza di un insieme di dati utilizzando il minor numero possibile di variabili.
+	
+	Inizialmente è stata presentata la PCA, sono stati spiegati i suoi obiettivi e come si applica. Successivamente è stato presentato un esempio di implementazione in Python, utilizzando la libreria PANDAS dedicata all'analisi dei dati. In ultimo è stato presentato un caso di studio, un IDS basato sulla PCA.
+	
+	Siamo così passati dalla spiegazione teorica della PCA ad una sua implementazione esemplificativa fino al suo effettivo utilizzo in una applicazione esistente.
 					
-			\newpage
+	\newpage
 
 \section{Codice Python completo}
-	\lstinputlisting[firstline=1, lastline=59]{code/PCA.py}
+	\codice{1}{56}
 	\newpage
-	\lstinputlisting[firstline=61, lastline=126]{code/PCA.py}
+	\codice{58}{123}
 	\newpage
-	\lstinputlisting[firstline=128, lastline=174]{code/PCA.py}
+	\codice{125}{174}
+	\newpage
 
 %----------------------------------------------------------------------------------------
 %	BIBLIOGRAPHY
