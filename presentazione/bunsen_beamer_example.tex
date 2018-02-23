@@ -20,6 +20,7 @@
 \usepackage{epsfig} 		% eps graphics
 \usepackage{hyperref} 		% urls
 \usepackage{booktabs, caption} % table styling
+\usepackage{setspace}
 
 % suppress navigation bar
 \beamertemplatenavigationsymbolsempty
@@ -319,17 +320,27 @@
 	
 		\begin{frame}{Autovalori e autovettori}
 			\codice{84}{94}
-			\begin{itemize}
-				\item In tutti i casi otteniamo la matrice degli autovettori $$\begin{bmatrix}
-				0.52237162 & -0.37231836 & -0.72101681 & 0.26199559\\
-				-0.26335492 & -0.92555649 & 0.24203288 & -0.12413481\\
-				0.58125401 & -0.02109478 & 0.14089226 & -0.80115427\\
-				0.56561105 & -0.06541577 & 0.6338014 & 0.52354627\\
-				\end{bmatrix}$$
-				con i rispettivi autovalori $$\begin{bmatrix}
-				2.91081808 & 0.92122093 & 0.14735327 & 0.02060770\\
-				\end{bmatrix}$$
-			\end{itemize}
+			\begin{spacing}{0.8}
+				\begin{itemize}
+					\item In tutti i casi otteniamo la matrice degli autovettori 
+						{
+							\small
+							$$\begin{bmatrix}
+								0.52237162 & -0.37231836 & -0.72101681 & 0.26199559\\
+								-0.26335492 & -0.92555649 & 0.24203288 & -0.12413481\\
+								0.58125401 & -0.02109478 & 0.14089226 & -0.80115427\\
+								0.56561105 & -0.06541577 & 0.6338014 & 0.52354627\\
+							\end{bmatrix}$$
+						}
+						con i rispettivi autovalori
+						{
+							\small
+							$$\begin{bmatrix}
+								2.91081808 & 0.92122093 & 0.14735327 & 0.02060770\\
+							\end{bmatrix}$$
+						}						
+				\end{itemize}
+			\end{spacing}
 		\end{frame}
 	
 		\begin{frame}{Selezione componenti}
