@@ -1,0 +1,136 @@
+\documentclass[xcolor=table]{beamer}%[handout] slides non ripetute
+
+\usetheme{Warsaw} %oppure Singapore
+\usecolortheme{crane} %oppure crane
+
+\usepackage[utf8]{inputenc}			%lettere accentate
+\usepackage[italian]{babel}			%sillabazione italiana
+\usepackage{amsmath}				%simboli matematici
+\usepackage{amsfonts}				%font matematici
+\usepackage{amssymb}				%altri simboli matematici
+\usepackage{tikz}					%grafica
+\usepackage{subfloat}				%affiancare figura
+\usepackage{xcolor}					%colori personalizzati
+%\usepackage{cancel}				%simbolo di semplificazione
+\usepackage{biblatex}				%bibliografia
+%\usepackage{soul}					%testo barrato
+\usepackage{listings}				%codice
+
+\definecolor{Orange}{rgb}{0.98,0.48,0.15}
+\definecolor{RawSienna}{cmyk}{0,0.72,1,0.45}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\definecolor{back}{rgb}{1,0.93,0.76}
+
+\lstset{ %
+	backgroundcolor=\color{back},  % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	basicstyle=\tiny,        	% the size of the fonts that are used for the code
+	breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+	breaklines=true,                % sets automatic line breaking
+	captionpos=b,                   % sets the caption-position to bottom
+	commentstyle=\color{mygreen},   % comment style
+	frame=single,	                % adds a frame around the code
+	keepspaces=true,                % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	keywordstyle=\color{blue},      % keyword style
+	language=R,                 	% the language of the code
+	numbers=none,                   % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                  % how far the line-numbers are from the code
+	numberstyle=\tiny\color{black}, % the style that is used for the line-numbers
+	rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	showspaces=false,               % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,         % underline spaces within strings only
+	showtabs=false,                 % show tabs within strings adding particular underscores
+	stepnumber=1,                   % the step between two line-numbers. If it's 1, each line will be numbered
+	stringstyle=\color{mygreen},    % string literal style
+	tabsize=2                   	% sets default tabsize to 2 spaces
+}
+
+\newcommand{\pok}{Pokémon }
+\newcommand{\tred}[1]{\textcolor{RawSienna}{#1}}
+\newcommand{\tblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\torange}[1]{\textcolor{Orange}{#1}}
+
+\author{Annalisa Mellace, Gianluca Casini, Marco Buracchi}
+
+\title{Analisi e classificazione del dataset "Pokémon"}
+
+\logo{\includegraphics[scale=0.12]{logo/char}}
+
+\institute{Gruppo: \textbf{Evergreen}}
+
+\date{}
+
+\subject{Multivariate Analysis and Statistical Learning}
+
+%\setbeamercovered{transparent}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamerfont{caption}{size=\scriptsize}
+
+\begin{document}
+	
+	{ % all template changes are local to this group.
+		\setbeamertemplate{navigation symbols}{}
+		\begin{frame}[plain]
+		\begin{tikzpicture}[remember picture,overlay]
+		\node[at=(current page.center)] {
+			\includegraphics[scale=0.6]{img/sfondo}
+		};
+		\end{tikzpicture}
+	\end{frame}
+}	
+	
+	\maketitle
+	
+	\include{chap/intro}
+	
+	{
+		\logo{}
+		\begin{frame}
+			\begin{tikzpicture}[remember picture,overlay]
+				\node[at=(current page.center)] {
+					\includegraphics[scale=0.37]{img/fine}
+				};
+			\end{tikzpicture}
+		\end{frame}
+	}
+	
+%	{ % all template changes are local to this group.
+%		\setbeamertemplate{navigation symbols}{}
+%		\begin{frame}[plain]
+%			\begin{tikzpicture}[remember picture,overlay]
+%			\node[at=(current page.center)] {
+%				\includegraphics[scale=0.35]{img/fine}
+%			};
+%			\end{tikzpicture}
+%		\end{frame}
+%	}
+%
+%	\begin{frame}{Bibliografia}
+%		\begin{thebibliography}{99}
+%			
+%			\bibitem[Boreale]{p1} Michele Boreale (2012)
+%			\newblock \textit{Note per il corso di CODICI E SICUREZZA, UNIFI}
+%			
+%			\bibitem[Stallings, Brown]{p2} William Stallings, Lawrie Brown (2015)
+%			\newblock \textit{Computer security: principles and practice}
+%			
+%			\bibitem[]{p3} Francesca Merola (2014)
+%			\newblock \textit{Slides del corso di elementi di crittografia, UNIROMA3}
+%			
+%			\bibitem[Wikipedia]{p4} ENIGMA su Wikipedia
+%			{
+%				\fontsize{10}{0}
+%				\newblock \url{https://it.wikipedia.org/wiki/Enigma_(crittografia)}
+%			}
+%		
+%			\bibitem[Cryptomuseum]{p5} Cryptomuseum
+%			\newblock \url{https://www.cryptomuseum.com}
+%						
+%		\end{thebibliography}
+%	\end{frame}
+	
+	
+\end{document}
