@@ -16,7 +16,8 @@
 \usepackage{amsfonts}		%font matematici
 \usepackage{amssymb}		%altri simboli matematici
 \usepackage{tikz}			%grafica
-\usepackage{listings}		%codice\usepackage{graphicx} % graphics
+\usepackage{listings}		%codice
+\usepackage{graphicx} 		% graphics
 \usepackage{epsfig} 		% eps graphics
 \usepackage{hyperref} 		% urls
 \usepackage{booktabs, caption} % table styling
@@ -226,12 +227,12 @@
 			\begin{itemize}
 				\item Ordiniamo in maniera decrescente gli autovalori ottenuti
 				\item Selezioniamo i primi \emph{k}
-				\item Costruiamo $\mathcal{V}$, la matrice dei rispettivi autovettori
+				\item Costruiamo $\mathcal{W}$, la matrice dei rispettivi autovettori
 			\end{itemize}
 			\item Rotazione dei dati
 			\begin{itemize}
 				\item Moltiplichiamo i dati originali per gli autovettori che indicano le direzioni dei nuovi assi (componenti principali) 
-				\item I dati ruotati vengono chiamati \emph{score} $$Sc = \mathcal{X} \times \mathcal{V}$$
+				\item I dati ruotati vengono chiamati \emph{score} $$Sc = \mathcal{X} \times \mathcal{W}$$
 			\end{itemize}
 		\end{enumerate}
 	\end{frame}
@@ -245,24 +246,31 @@
 	\subsection{Strumenti}
 
 		\begin{frame}{Strumenti utilizzati}
-			\begin{itemize}
-				\item Linguaggio: Python
-				\item Libreria per l'analisi dei dati: \emph{PANDAS}
-				\item Dataset: IRIS
-			\end{itemize}
+			\begin{figure}[htbp]
+				\centering
+				\begin{minipage}[c]{.40\textwidth}
+					\centering\setlength{\captionmargin}{0pt}%
+					\includegraphics[width=.9\textwidth]{python}
+				\end{minipage}%
+				\hspace{10mm}%
+				\begin{minipage}[c]{.40\textwidth}
+					\centering\setlength{\captionmargin}{0pt}%
+					\includegraphics[width=\textwidth]{pandas}
+				\end{minipage}
+				\includegraphics[scale=.15]{virginica}
+			\end{figure}
 		\end{frame}
-
 
 		\begin{frame}{PANDAS}
 			\begin{itemize}
-				\item Libreria Python, open source, ad alte prestazioni e con licenza BSD
+				\item Libreria Python, open source, ad alte prestazioni e con licenza BSD\footnote[frame]{Berkeley Software Distribution}
 				\item Strutture dati e strumenti per l'analisi facili da usare (R-like)
 				\begin{itemize}
 					\item Serie (unidimensionali)
 					\item Dataframe (bidimensionali)
 				\end{itemize}
 				\item Dati organizzati in maniera \emph{relazionale} o \emph{etichettata}
-				\item Sponsorizzato da NumFocus
+				\item Sponsorizzato da \emph{NumFocus} (matplotlib, simpy, julia\dots)
 				\begin{columns}
 					\begin{column}{.3\textwidth}
 						\figcen{\columnwidth}{numFocus}
@@ -314,7 +322,8 @@
 			\figcen{.7\textwidth}{isto}
 		\end{frame}
 	
-		\begin{frame}{Analisi descrittiva}
+		\begin{frame}{Standardizzazione}
+			\figcen{.35\textwidth}{standard}
 			\begin{itemize}
 				\item Valori su scale diverse richiedono standardizzazione
 				\item Usiamo la funzione di libreria
@@ -334,17 +343,17 @@
 						{
 							\small
 							$$\begin{bmatrix}
-								0.52237162 & -0.37231836 & -0.72101681 & 0.26199559\\
-								-0.26335492 & -0.92555649 & 0.24203288 & -0.12413481\\
-								0.58125401 & -0.02109478 & 0.14089226 & -0.80115427\\
-								0.56561105 & -0.06541577 & 0.6338014 & 0.52354627\\
+								0.522 & -0.372 & -0.721 & 0.261\\
+								-0.263 & -0.925 & 0.242 & -0.124\\
+								0.581 & -0.021 & 0.140 & -0.801\\
+								0.565 & -0.065 & 0.633 & 0.523\\
 							\end{bmatrix}$$
 						}
 						con i rispettivi autovalori
 						{
 							\small
 							$$\begin{bmatrix}
-								2.91081808 & 0.92122093 & 0.14735327 & 0.02060770\\
+								2.910 & 0.921 & 0.147 & 0.020\\
 							\end{bmatrix}$$
 						}						
 				\end{itemize}
@@ -380,11 +389,17 @@
 			\begin{itemize}
 				\item Creiamo la matrice di proiezione $\mathcal{W}$
 			\end{itemize}
-			$$\mathcal{W} = \begin{bmatrix}
-			0.52237162 & -0.37231836\\
-			-0.26335492 & -0.92555649\\
-			0.58125401 & -0.02109478\\
-			0.56561105 & -0.06541577\\
+			$$\begin{bmatrix}
+			\textcolor{red}{0.522} & \textcolor{red}{-0.372} & -0.721 & 0.261\\
+			\textcolor{red}{-0.263} & \textcolor{red}{-0.925} & 0.242 & -0.124\\
+			\textcolor{red}{0.581} & \textcolor{red}{-0.021} & 0.140 & -0.801\\
+			\textcolor{red}{0.565} & \textcolor{red}{-0.065} & 0.633 & 0.523\\
+			\end{bmatrix} \Rightarrow
+			\mathcal{W} = \begin{bmatrix}
+			0.522 & -0.372\\
+			-0.263 & -0.925\\
+			0.581 & -0.021\\
+			0.565 & -0.065\\
 			\end{bmatrix}$$
 		\end{frame}
 
@@ -392,7 +407,8 @@
 			\begin{itemize}
 				\item Proiettiamo nel nuovo sottospazio $$\mathcal{Y} = \mathcal{X}\times \mathcal{W} \qquad \mathcal{Y} \in \mathcal{M}^{150x2}$$
 			\end{itemize}
-			\codice{132}{133}
+			\codice{132}{133} \pause
+			\figcen{.5\textwidth}{dubbio}
 		\end{frame}
 		
 		\begin{frame}{Risultato}
@@ -439,7 +455,7 @@
 					\begin{itemize}
 						\item Riconoscono le \emph{firme} degli attacchi noti
 						\item 100\% di successo delle rilevazioni
-						\item Riconosco solo attacchi noti
+						\item Riconoscono solo attacchi noti
 					\end{itemize}
 					\item Anomaly based
 					\begin{itemize}
@@ -454,7 +470,7 @@
 		\begin{frame}{Idea}
 			\figcen{.3\textwidth}{idea}
 			\begin{itemize}
-				\item Possiamo costruire un IDS basato sulla PCA\footnote[frame]{2006, Labib, Khaled and Vemuri, V. Rao: An application of PCA\\ to the detection and visualization of computer network attacks}?
+				\item Possiamo costruire un IDS basato sulla PCA\footnote[frame]{2006, Labib Khaled and Vemuri V. Rao: An application of PCA\\ to the detection and visualization of computer network attacks}?
 				\item Capiamo un po' meglio come funzionano i principali attacchi
 			\end{itemize}
 			
@@ -529,7 +545,7 @@
 
 		\begin{frame}{Analisi dei dati}
 			\begin{itemize}
-				\item 1998 DARPA Intrusion Detection Evaluation data sets
+				\item 1998 DARPA\footnote[frame]{Defense Advanced Research Projects Agency} Intrusion Detection Evaluation data sets
 				\item Utilizzo della rete in 7 settimane
 				\item Presente traffico normale e vari attacchi (tra cui quelli ai quali siamo interessati)
 				\item Preprocessing (estrazione delle intestazioni o \emph{header} dei pacchetti di rete)
